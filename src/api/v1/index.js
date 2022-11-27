@@ -13,8 +13,4 @@ app.get("/", (req, res) => {
   res.send("<h1>This is user index page</h1>");
 });
 
-app.get("/home", (req, res) => {
-  res.send("<h1>This is home index page</h1>");
-});
-
 module.exports = app;
