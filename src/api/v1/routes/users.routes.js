@@ -4,6 +4,13 @@ const userRoute = express.Router();
 
 const { createUser, allUsers } = require("../controllers/user.controller");
 
+/**
+ * @swagger
+ * user/all-users:
+ *   get:
+ *     summary: Retrieve a list of JSONPlaceholder users.
+ *     description: Retrieve a list of users from JSONPlaceholder.
+ */
 userRoute.get("/all-users", allUsers);
 userRoute.post("/create", createUser);
 

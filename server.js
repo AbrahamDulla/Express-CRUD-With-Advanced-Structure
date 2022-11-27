@@ -7,15 +7,34 @@ const swaggerJsDocS = require("swagger-jsdoc");
 
 const server = http.createServer(app);
 
-const swaggerOptions = {
-  swaggerDefinition: {
-    info: {
-      title: "Abrish Swagger",
-      description: "Swagger Test Description",
-      version: "1.0",
+const swaggerDefinition = {
+  openapi: "3.0.0",
+  info: {
+    title: "Express API for JSONPlaceholder",
+    version: "1.0.0",
+    description:
+      "This is a REST API application made with Express. It retrieves data from JSONPlaceholder.",
+    license: {
+      name: "Licensed Under MIT",
+      url: "https://spdx.org/licenses/MIT.html",
+    },
+    contact: {
+      name: "JSONPlaceholder",
+      url: "https://jsonplaceholder.typicode.com",
     },
   },
-  apis: ["server.js"],
+  servers: [
+    {
+      url: "http://localhost:3000",
+      description: "Development server",
+    },
+  ],
+};
+
+const swaggerOptions = {
+  swaggerDefinition,
+  // Paths to files containing OpenAPI definitions
+  apis: ["./src/api/v1/routes/*.js"],
 };
 
 const swaggerDocs = swaggerJsDocS(swaggerOptions);
