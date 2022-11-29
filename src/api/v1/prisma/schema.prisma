@@ -10,7 +10,7 @@ datasource db {
 model users {
   id       Int     @id @default(autoincrement())
   name     String? @db.VarChar(50)
-  email    String? @db.VarChar(50)
+  email    String  @unique
   password String? @db.VarChar(50)
 }
 
@@ -18,7 +18,7 @@ model customers {
   id              Int               @id
   name            String?           @db.VarChar(50)
   website         String?           @db.VarChar(50)
-  email           String?           @db.VarChar(50)
+  email           String?           @unique
   phoneNumber     String?           @db.VarChar(50)
   adress          String?           @db.VarChar(50)
   sectorId        String?           @db.VarChar(50)

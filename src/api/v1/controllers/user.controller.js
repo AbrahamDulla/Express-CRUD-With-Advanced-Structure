@@ -7,7 +7,14 @@ const prisma = new PrismaClient();
 const allUsers = asyncHandler(async (req, res) => {
   try {
     const users = await prisma.users.findMany();
-    res.json(users);
+    if (users) {
+      return res.status(201).json({
+        success: true,
+        status: 201,
+        message: `All Users find successfully!!!`,
+        data: users,
+      });
+    }
   } catch (error) {
     res.status(400).json({
       error: error,
@@ -19,7 +26,7 @@ const allUsers = asyncHandler(async (req, res) => {
 const oneUser = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params;
-    const users = await prisma.users.findUnique({
+    const users = await prisma.users.findUniqueOrThrow({
       where: {
         id: Number(id),
       },
@@ -32,7 +39,6 @@ const oneUser = asyncHandler(async (req, res) => {
         data: users,
       });
     }
-    res.json(users);
   } catch (error) {
     res.status(400).json({
       error: error,
@@ -116,7 +122,7 @@ const deleteUser = asyncHandler(async (req, res) => {
     return res.status(201).json({
       success: true,
       status: 201,
-      message: "User deleted successfully!!!",
+      message: `${user.name} deleted successfully!!!`,
       data: user,
     });
   }
