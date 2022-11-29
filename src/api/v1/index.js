@@ -1,6 +1,6 @@
 const express = require("express");
 // const connection = require("./connection");
-// const router = require("./routes/users.routes");
+// const userRouter = require("./routes/users.routes");
 //const roleRoute = require("./api/v1/routes/");
 const app = express();
 
