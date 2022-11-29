@@ -1,7 +1,8 @@
 const http = require("http");
 const app = require("./src/api/v1/index");
 const swaggerOptions = require("./src/config/swagger");
-const port = 3000;
+
+const PORT = process.env.APP_PORT || 3000;
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsDocS = require("swagger-jsdoc");
@@ -12,6 +13,6 @@ const swaggerDocs = swaggerJsDocS(swaggerOptions);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-server.listen(port, () => {
-  console.log(`Express Crud is running on port http://localhost:${port}`);
+server.listen(PORT, () => {
+  console.log(`Express Crud is running on port http://localhost:${PORT}`);
 });

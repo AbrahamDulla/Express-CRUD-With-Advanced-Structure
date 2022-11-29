@@ -7,10 +7,10 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/user", require("./routes/users.routes"));
-
 app.get("/", (req, res) => {
-  res.send("<h1>This is user index page</h1>");
+  res.send("<h1>This is Advanced CRUD Home page</h1>");
 });
+
+app.use("/user", require("./routes/users.routes"));
 
 module.exports = app;

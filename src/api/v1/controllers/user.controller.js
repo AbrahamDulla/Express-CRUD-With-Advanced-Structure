@@ -49,7 +49,14 @@ const updateUser = asyncHandler(async (req, res) => {
   } catch (error) {}
 });
 
+const deleteUser = asyncHandler(async (req, res) => {
+  try {
+  } catch (error) {}
+});
+
 module.exports = {
   createUser,
   allUsers,
+  updateUser,
+  deleteUser,
 };
